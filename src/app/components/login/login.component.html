@@ -8,22 +8,28 @@
         </span>
         <h6 class="company_title">Travail - Discipline - Reussite</h6>
       </div>
-  
+
       <div class="col-md-8 col-12 login_form">
         <div class="container-fluid">
           <div class="row">
             <h2>Connexion</h2>
           </div>
           <div class="row">
-            <form control="" class="form-group">
+            <form [formGroup]="login" (ngSubmit)="onSubmit()">
               <div class="row mb-3">
-                <input type="text" name="username" id="username" class="form-control" placeholder="Email">
+                <input type="text" formControlName="username"  class="form-control" placeholder="Username">
               </div>
-              <div class="row mb-3">
-                <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe">
+              <div class="row mb-3 position-relative">
+                <input [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password" class="form-control" placeholder="Mot de passe" style="padding-right: 40px;">
+                <i class="fa" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"
+                   (click)="togglePasswordVisibility()"
+                   style="position: absolute; left: 160px; top: 50%; transform: translateY(-50%); cursor: pointer;" *ngIf="!isMobile()">
+                </i>
               </div>
+
               <div class="row">
-                <input (click)="submit()" type="submit" value="Se connecter" class="btn btn-primary w-100">
+                <input [disabled]="!login.valid"  type="submit" value="Se connecter" class="btn btn-primary w-100">
+
               </div>
             </form>
           </div>
@@ -31,4 +37,3 @@
       </div>
     </div>
   </div>
-  

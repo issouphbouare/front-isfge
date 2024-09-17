@@ -1,79 +1,153 @@
-<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 sticky-top">
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <img src="../assets/images/logo/logo.jpg" alt="hugenerd" width="60" height="60" class="rounded-circle" />
-                        </a>
-                    </li>
-                </ul>
-                
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a routerLink="/dashboard" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/classes" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Classes</span></a>
-                    </li>
-                    <li>
-                        <a routerLink="/eleves" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi bi-people-fill"></i> <span class="ms-1 d-none d-sm-inline">Eleves</span></a>
-                    </li>
-                    <li>
-                        <a routerLink="/enseignants" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi bi-people"></i> <span class="ms-1 d-none d-sm-inline">Personnels</span></a>
-                    </li>
-                    <li>
-                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi bi-currency-exchange"></i> <span class="ms-1 d-none d-sm-inline">Finances</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a routerLink="/paiements" class="nav-link px-0"> <span class="d-none d-sm-inline">Mensualités</span> 1</a>
-                            </li>
-                            <li>
-                                <a routerLink="/remunerations" class="nav-link px-0"> <span class="d-none d-sm-inline">Rémunerations</span> 2</a>
-                            </li>
-                            <li class="w-100">
-                                <a routerLink="/depenses" class="nav-link px-0"> <span class="d-none d-sm-inline">Autres Depenses</span> 3</a>
-                            </li>
-                            <li>
-                                <a routerLink="/autreEntree" class="nav-link px-0"> <span class="d-none d-sm-inline">Autres Entree</span> 4</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi bi-menu-up"></i> <span class="ms-1 d-none d-sm-inline">Admin</span> </a>
-                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a routerLink="/anneeScolaire" class="nav-link px-0"> <span class="d-none d-sm-inline">Annee Scolaires</span> 1 </a>
-                            </li>
-                            <li>
-                                <a routerLink="/users" class="nav-link px-0"> <span class="d-none d-sm-inline">Utilisateurs</span> 2 </a>
-                            </li>
-                        </ul>
-                    </li>                    
-                    
-                    
-                    
-                </ul>
-                <hr>
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../assets/images/logo/profil.png" alt="hugenerd" width="40" height="40" class="">
-                        <span class="d-none d-sm-inline mx-1" style="color: blue;">Username</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        
-                        <li><a class="dropdown-item" routerLink="/password">Mot de passe</a></li>
-                        <li><a class="dropdown-item" routerLink="/profil">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" routerLink="/login">Se deconnecter</a></li>
-                    </ul>
-                </div>
+<div class="container">
+  <div class="row ">
+      <div class="col-md-12 mt-8">
+          <div class="card">
+
+              <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+                  <div class="container-fluid">
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#mynavbar">
+                          <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="mynavbar">
+                          <ul class="navbar-nav me-auto">
+
+                              <li class="nav-item">
+                                  <a class="navbar-brand" routerLink="/dashboard" *ngIf="isLoggedIn">Dashboard</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="navbar-brand" routerLink="/classes" *ngIf="isLoggedIn">Classes</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="navbar-brand" routerLink="/eleves" *ngIf="isLoggedIn">Eleves</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="navbar-brand" routerLink="/enseignants" *ngIf="isLoggedIn">Enseignants</a>
+                              </li>
+
+
+                              <li class="nav-item dropdown" *ngIf="isUser || isAdmin">
+                                  <a class="navbar-brand" href="#" id="navbarScrollingDropdown" *ngIf="isLoggedIn"
+                                      role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Finances
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item" routerLink="/paiements">Paiments Eleves</a></li>
+                                      <li>
+                                          <hr class="dropdown-divider">
+                                      </li>
+                                      <li><a class="dropdown-item" routerLink="/remunerations">Rémunerations Personnels</a></li>
+                                      <li>
+                                          <hr class="dropdown-divider">
+                                      </li>
+                                      <li><a class="dropdown-item" routerLink="/depenses">Autres Depenses</a></li>
+                                      <li>
+                                          <hr class="dropdown-divider">
+                                      </li>
+                                      <li><a class="dropdown-item" routerLink="/entrees">Autres Entrées</a>
+                                      </li>
+
+
+                                  </ul>
+                              </li>
+
+                              <li class="nav-item dropdown" *ngIf="isAdmin">
+                                  <a class="navbar-brand" href="#" id="navbarScrollingDropdown" *ngIf="isLoggedIn"
+                                      role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Admin
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item" routerLink="/users">Utilisateurs</a></li>
+                                      <li>
+                                          <hr class="dropdown-divider">
+                                      </li>
+                                      <li><a class="dropdown-item" routerLink="/annees">Années Scolaires</a></li>
+                                      <li>
+                                  </ul>
+                              </li>
+                          </ul>
+                          <form class="d-flex">
+                              <ul class="navbar-nav">
+                                  <li class="button">
+                                      <a class="navbar-brand"></a>
+                                  </li>
+                                  <li class="nav-item dropdown">
+                                      <a class="navbar-brand" href="#" id="navbarScrollingDropdown" role="button"
+                                          data-bs-toggle="dropdown" aria-expanded="false">
+                                          {{username}} <i *ngIf="isLoggedIn" class="bi bi-person"></i>
+
+                                      </a>
+                                      <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                          <li>
+                                              <a class="dropdown-item" *ngIf="!isLoggedIn"
+                                                  routerLink="/addUser">S'inscrire</a>
+                                          </li>
+                                          <li>
+
+                                          </li>
+                                          <li>
+                                              <a class="dropdown-item" *ngIf="!isLoggedIn" routerLink="/login">Se
+                                                  connecter</a>
+                                          </li>
+
+
+                                          <li>
+                                              <a class="dropdown-item" *ngIf="isLoggedIn"
+                                              [routerLink]="['/profil',username]">Profil</a>
+                                          </li>
+                                          <li>
+                                              <a class="dropdown-item" *ngIf="isLoggedIn" [routerLink]="['/password',username]">Mot
+                                                  de passe</a>
+                                          </li>
+                                          <li>
+                                              <a class="dropdown-item" style="cursor: pointer;" *ngIf="isLoggedIn"
+                                                  (click)="logout()">Se deconnecter</a>
+                                          </li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                          </form> <br/>
+
+                          <!-- <form class="d-flex"><ul class="navbar-nav"
+                              *ngIf="authService.username==''">
+                              <li class="button">
+                                  <a class="navbar-brand"></a>
+                              </li>
+                              <li class="nav-item dropdown">
+                                  <a class="navbar-brand" href="#" id="navbarScrollingDropdown" role="button"
+                                      data-bs-toggle="dropdown" aria-expanded="false">
+                                      {{user}}
+                                      <i class="bi bi-person"></i>
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li *ngIf="authService.isloggedIn==false">
+                                          <a class="dropdown-item" routerLink="/addMilitant">S'inscrire</a></li>
+                                      <li>
+
+                                      </li>
+                                      <li *ngIf="authService.isloggedIn==false">
+                                          <a class="dropdown-item" routerLink="/connect">Se connecter</a>
+                                      </li>
+
+
+                                      <li *ngIf="authService.isloggedIn">
+                                          <a class="dropdown-item" routerLink="/profil">Profil</a>
+                                      </li>
+                                      <li *ngIf="authService.isloggedIn">
+                                          <a class="dropdown-item" routerLink="/password">Mot de passe</a>
+                                      </li>
+                                      <li *ngIf="authService.isloggedIn">
+                                          <a class="dropdown-item" style="cursor: pointer;"
+                                          (click)="onDeconnecter()">Se deconnecter</a>
+                                      </li>
+                                  </ul>
+                              </li></ul>
+                            </form> -->
+                      </div>
+                  </div>
+              </nav>
+
+          </div>
+      </div>
+  </div>
 </div>
-        

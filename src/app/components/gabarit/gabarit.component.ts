@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-gabarit',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./gabarit.component.css']
 })
 export class GabaritComponent {
-  ok :boolean=true;
+  
+  isLoggedIn = false;
+  constructor(private tokenStorageService: TokenStorageService) { }
+  ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();}
 
 }

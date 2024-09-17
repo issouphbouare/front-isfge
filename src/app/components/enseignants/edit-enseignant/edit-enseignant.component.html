@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-12 mt-8" *ngIf="donnee">
+          <div class="card">
+              <div class="card-header">
+                  <div class="row">
+                      <div class="col-md-2">
+                          <a [routerLink]="['/enseignants']" class="btn btn-light float-light"><i class="bi bi-arrow-left"></i></a>
+                      </div>
+                      <div class="col-md-10">
+                          <h4>
+                              Modification de Personnel {{donnee.code}}
+                          </h4>
+                      </div>
+                  </div>
+              </div>
+                 <div class="card-body"  >
+                  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                      <div class="row">
+                          <div class="col-md-8">
+                            <div class="form-group">
+                              <label>Prenom</label>
+                              <input [(ngModel)]="donnee.prenom" type="text" formControlName="prenom" class="form-control" placeholder="au moins 2 caracteres ">
+                              <p style="color: brown;" *ngIf="!form.controls['prenom'].valid"> (Le premier
+                                caractere doit etre une lettre majuscule )  </p>
+                              <label>Nom</label>
+                              <input [(ngModel)]="donnee.nom" type="text" formControlName="nom" class="form-control" placeholder="au moins 2 caracteres ">
+                              <p style="color: brown;" *ngIf="!form.controls['nom'].valid"> (Mettez
+                                des lettres majuscules) </p>
+                                <label>Telephone</label>
+                    <input
+                      type="tel" [(ngModel)]="donnee.telephone"
+                      formControlName="telephone"
+                      class="form-control"
+
+                    />
+                    <p
+                      style="color: brown"
+                      *ngIf="!form.controls['telephone'].valid"
+                    >
+                      (Le numéro  de telephone doit contenir 8 chiffres )
+                    </p>
+                               <label>Genre</label>
+                              <select [(ngModel)]="selectedGenre" formControlName="genre"
+                                  class="form-control" (change)="onSelectionGenre()">
+                                  <option *ngFor="let option of optionsG"
+                                      [value]="option.value">{{
+                                      option.label }}</option>
+                              </select>
+                              <p style="color: brown;"
+                                  *ngIf="!form.controls['genre'].valid">
+                                  (Champ obligatoire * ) </p>
+                                  <label>Type Personnels</label>
+                                  <select [(ngModel)]="selectedType" formControlName="typeEnseignant"
+                                      class="form-control" (change)="onSelectionType()">
+                                      <option *ngFor="let option of optionsTypes"
+                                          [value]="option.value">{{
+                                          option.label }}</option>
+                                  </select>
+                                  <p style="color: brown;"
+                                      *ngIf="!form.controls['typeEnseignant'].valid">
+                                      (Champ obligatoire * ) </p>
+
+                              <label *ngIf="isVacataire">Taux Horaire</label>
+                              <input [(ngModel)]="donnee.tauxHoraire" [type]="isVisibleVac" formControlName="tauxHoraire" class="form-control">
+                              <p style="color: brown;" *ngIf="!form.controls['tauxHoraire'].valid"> (minimum 0 ) </p>
+                              <label *ngIf="isPer">Taux Forfaitaire</label>
+                              <input [(ngModel)]="donnee.tauxForfaitaire" [type]="isVisiblePer" formControlName="tauxForfaitaire" class="form-control" >
+                              <p style="color: brown;" *ngIf="!form.controls['tauxForfaitaire'].valid"> (minimum 0 ) </p>
+
+                             </div><br>
+                             <div class="form-group sm-2">
+                              <button  [disabled]="!form.valid" type="submit" class="btn btn-secondary px-4">Enregistrer</button>
+                          </div>
+                         </div>
+                     </div>
+                  </form>
+                 </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
