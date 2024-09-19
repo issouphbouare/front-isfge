@@ -63,7 +63,9 @@ export class EditEleveComponent implements OnInit {
       this.isMensuel=true; this.isMensuelType='tel'
     }else {
       this.isNoMensuel=true; this.isNoMensuelType='tel'
-    }  this.selectedClasse=this.donnee.classe.id;
+    }
+    this.onSelectionType()
+    this.selectedClasse=this.donnee.classe.id;
        this.getClasseCur()
   }, err=>{
     console.log(err);

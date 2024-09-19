@@ -1,1 +1,45 @@
-<p>edit-depense works!</p>
+<div class="container">
+  <div class="row">
+      <div class="col-md-12 mt-8" *ngIf="donnee region regions">
+          <div class="card">
+              <div class="card-header">
+                  <div class="row">
+                      <div class="col-md-2">
+                          <a [routerLink]="['/depenses']" class="btn btn-light float-light"><i class="bi bi-arrow-left"></i></a>
+                      </div>
+                      <div class="col-md-10">
+                          <h4>
+                              Modification de Depense {{donnee.libelle}}
+                          </h4>
+                      </div>
+                  </div>
+              </div>
+                 <div class="card-body"  >
+                  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                      <div class="row">
+                          <div class="col-md-8">
+                            <div class="form-group">
+                               <label>Libéllé</label>
+                               <input  type="text" formControlName="libelle" class="form-control"  [(ngModel)]="donnee.libelle">
+                               <p style="color: brown;" *ngIf="!form.controls['libelle'].valid"> (Champ obligatoire *) </p>
+
+                               <label>Montant</label>
+                               <input type="tel" formControlName="montant" class="form-control"  [(ngModel)]="donnee.montant">
+                               <p style="color: brown;" *ngIf="!form.controls['montant'].valid"> (pas de valeur negative) </p>
+
+
+                          </div><br>
+                             <div class="form-group sm-2">
+                              <button  [disabled]="!form.valid" type="submit" class="btn btn-secondary px-4">Enregistrer</button>
+                          </div>
+                         </div>
+                     </div>
+                  </form>
+                 </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+

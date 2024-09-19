@@ -19,17 +19,22 @@
                       <div class="row">
                           <div class="col-md-8">
                             <div class="form-group">
-                               <label>Nom Cercle</label>
+                               <label>Nom Classe</label>
                                <input  type="text" formControlName="nom" class="form-control" placeholder="au moins 3 letttres "  [(ngModel)]="donnee.nom">
                                <p style="color: brown;" *ngIf="!form.controls['nom'].valid"> (Le remier caractere doit etre une lettres majuscule ) </p>
 
                                <label>Cycle</label>
-                               <input type="text" formControlName="cycle" class="form-control" placeholder="au moins 2 caracteres " [(ngModel)]="donnee.cycle">
-                               <p style="color: brown;" *ngIf="!form.controls['cycle'].valid"> (au moins 2 caracteres ) </p>
-                               <label>Niveau</label>
-                               <input type="text" formControlName="niveau" class="form-control" placeholder="au moins 3 letttres " [(ngModel)]="donnee.niveau">
-                               <p style="color: brown;" *ngIf="!form.controls['niveau'].valid"> (Le remier caractere doit etre une lettres majuscule ) </p>
-
+                                  <select [(ngModel)]="donnee.cycle" formControlName="cycle" class="form-control" required>
+                                    <option value="" disabled>Sélectionner un cycle</option>
+                                    <option *ngFor="let c of cycles" [value]="c">{{ c }}</option>
+                                  </select>
+                                     <p style="color: brown;" *ngIf="!form.controls['cycle'].valid"> (Champ obligatoire * ) </p>
+                                  <label>Niveau</label>
+                                  <select [(ngModel)]="donnee.niveau" formControlName="niveau" class="form-control" required>
+                                    <option value="" disabled>Sélectionner un niveau</option>
+                                    <option *ngFor="let c of niveaux" [value]="c">{{ c }}</option>
+                                  </select>
+                                  <p style="color: brown;" *ngIf="!form.controls['niveau'].valid"> (Champ obligatoire * ) </p>
 
                           </div><br>
                              <div class="form-group sm-2">

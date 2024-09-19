@@ -19,8 +19,9 @@ export class ElevesComponent {
   urlDownload: string='';
   idAv: number =0;
   totalSearch:number=0;
+  montants:number=0;
   public currentPage: number=0;
-    public size : number=6;
+    public size : number=60;
     public nbPage : number=0;
     public pages : Array<number>=[];
 
@@ -90,6 +91,7 @@ export class ElevesComponent {
         this.pages = new Array<number>(this.nbPage);
         this.donnees = data.content;
         console.log(this.donnees)
+        this.getMontant()
       }, err => {
         console.log(err);
       });
@@ -106,6 +108,12 @@ export class ElevesComponent {
       this.onSearch();
     }
 
+    getMontant(){
+      this.montants=0;
+      this.donnees.forEach((e :any) => {
+        this.montants+=e.solde
+      });
+    }
   }
 
 

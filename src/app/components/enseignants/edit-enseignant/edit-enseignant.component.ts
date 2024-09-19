@@ -53,6 +53,7 @@ export class EditEnseignantComponent implements OnInit {
     this.donnee=data;
 this.selectedGenre=this.donnee.genre;
 this.selectedType=this.donnee.typeEnseignant;
+this.onSelectionType()
   }, err=>{
     console.log(err);
   })

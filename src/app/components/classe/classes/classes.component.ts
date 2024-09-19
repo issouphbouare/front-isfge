@@ -19,7 +19,7 @@ export class ClassesComponent {
   idAv: number =0;
   totalSearch:number=0;
   public currentPage: number=0;
-    public size : number=6;
+    public size : number=15;
     public nbPage : number=0;
     public pages : Array<number>=[];
 

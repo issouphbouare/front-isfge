@@ -21,7 +21,9 @@ export class EditPaiementComponent implements OnInit {
   public pages : Array<number>=[];
   public url: string='';
   form : FormGroup= new FormGroup({});
-
+  types: string[] = [
+    'Inscription et Relicat', 'Mensualité', 'Scolarité', 'Autre'
+  ];
 
 
   constructor(private http: HttpClient,private route:ActivatedRoute,
@@ -32,7 +34,7 @@ export class EditPaiementComponent implements OnInit {
     this.form=this.formBuilder.group({
       type : ['',[Validators.required]],
       mois : ['',[Validators.required]],
-      montant : ['',[Validators.required]],
+      montant : ['',[ Validators.pattern('^[0-9]*$'),]],
 
 
     });

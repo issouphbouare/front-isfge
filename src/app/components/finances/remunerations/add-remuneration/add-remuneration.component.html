@@ -1,1 +1,50 @@
-<p>add-remuneration works!</p>
+<div class="col-md-12">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12 mt-8">
+              <div class="card">
+                  <div class="card-header">
+                      <div class="row">
+                          <div class="col-md-2">
+                              <a [routerLink]="['/enseignants']" class="btn btn-light float-light"><i class="bi bi-arrow-left"></i></a>
+                          </div>
+                          <div class="col-md-10">
+                              <h4>
+                                  Ajout de Rémunération
+                              </h4>
+                          </div>
+                      </div>
+
+                  </div>
+                     <div class="card-body">
+                      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                         <div class="row">
+                             <div class="col-md-8">
+                              <div class="form-group">
+
+                              </div>
+                                 <div class="form-group">
+                                 <label>Mois</label>
+                                 <select formControlName="mois" class="form-control" required>
+                                  <option value="" disabled>Sélectionner un mois</option>
+                                  <option *ngFor="let mois of mois" [value]="mois">{{ mois }}</option>
+                                </select>                                  <p style="color: brown;" *ngIf="!form.controls['mois'].valid"> (Champ obligatoire * ) </p>
+
+                                  <label>Montant</label>
+                                  <input type="tel" formControlName="montant" class="form-control" placeholder="au moins 3 letttres ">
+                                  <p style="color: brown;" *ngIf="!form.controls['montant'].valid"> (Numerique et positive *  ) </p>
+
+
+                                 </div>
+                                 <br>
+                                 <div class="form-group">
+                                  <button  [disabled]="!form.valid" type="submit" class="btn btn-secondary px-4">Ajouter</button>
+                              </div>
+                             </div>
+                         </div>
+                      </form>
+                     </div>
+              </div>
+          </div>
+      </div>
+  </div>

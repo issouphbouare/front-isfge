@@ -42,6 +42,12 @@ import { EditEntreeComponent } from './components/finances/entree/edit-entree/ed
 import { DepensesComponent } from './components/finances/depense/depenses/depenses.component';
 import { AddDepenseComponent } from './components/finances/depense/add-depense/add-depense.component';
 import { EditDepenseComponent } from './components/finances/depense/edit-depense/edit-depense.component';
+import { SeancesComponent } from './components/seances/seances.component';
+import { AddSeanceComponent } from './components/add-seance/add-seance.component';
+import { EditSeanceComponent } from './components/edit-seance/edit-seance.component';
+import { MatieresComponent } from './components/admin/matiere/matieres/matieres.component';
+import { AddMatiereComponent } from './components/admin/matiere/add-matiere/add-matiere.component';
+import { EditMatiereComponent } from './components/admin/matiere/edit-matiere/edit-matiere.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +86,13 @@ import { EditDepenseComponent } from './components/finances/depense/edit-depense
     EditEntreeComponent,
     DepensesComponent,
     AddDepenseComponent,
-    EditDepenseComponent
+    EditDepenseComponent,
+    SeancesComponent,
+    AddSeanceComponent,
+    EditSeanceComponent,
+    MatieresComponent,
+    AddMatiereComponent,
+    EditMatiereComponent
   ],
   imports: [
     BrowserModule,

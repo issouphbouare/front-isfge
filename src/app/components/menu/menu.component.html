@@ -22,8 +22,11 @@
                                   <a class="navbar-brand" routerLink="/eleves" *ngIf="isLoggedIn">Eleves</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="navbar-brand" routerLink="/enseignants" *ngIf="isLoggedIn">Enseignants</a>
+                                  <a class="navbar-brand" routerLink="/enseignants" *ngIf="isLoggedIn">Personnels</a>
                               </li>
+                              <li class="nav-item">
+                                <a class="navbar-brand" routerLink="/seances" *ngIf="isLoggedIn">Seances</a>
+                            </li>
 
 
                               <li class="nav-item dropdown" *ngIf="isUser || isAdmin">
@@ -62,6 +65,11 @@
                                           <hr class="dropdown-divider">
                                       </li>
                                       <li><a class="dropdown-item" routerLink="/annees">Années Scolaires</a></li>
+                                      <li>
+                                        <li>
+                                          <hr class="dropdown-divider">
+                                      </li>
+                                      <li><a class="dropdown-item" routerLink="/matieres">Matieres</a></li>
                                       <li>
                                   </ul>
                               </li>

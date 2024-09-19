@@ -61,9 +61,28 @@
               <td>{{ p.nom }}</td>
               <td>{{ p.prenom }}</td>
               <td>{{ p.typeEnseignant }}</td>
-              <td>{{ p.impayes }}</td>
+              <td>{{ p.impayes }} F</td>
+              <td>
+                <button
 
+                  class="btn btn-light" *ngIf="p.typeEnseignant=='Vacataire'"
+                >soit {{p.impayes/p.tauxHoraire}} H
+                </button> </td>
 
+              <td>
+                <button
+                  [routerLink]="['/addSeance', p.id]"
+                  class="btn btn-success" *ngIf="p.typeEnseignant=='Vacataire'"
+                >Ajout Seance
+                </button>
+              </td>
+              <td>
+                <button
+                  [routerLink]="['/addRemuneration', p.id]"
+                  class="btn btn-primary"
+                >Rémunérer
+                </button>
+              </td>
               <td>
                 <button
                   [routerLink]="['/editEnseignant', p.id]"
@@ -83,10 +102,10 @@
         <div class="row" *ngIf="totalSearch != 0">
           <div class="col-md-8"></div>
           <div class="col-md-2" style="background-color: rgb(227, 232, 232)">
-            <h6>Total :</h6>
+            <h6>Effectifs : {{ totalSearch }}</h6>
           </div>
           <div class="col-md-2" style="background-color: rgb(227, 232, 232)">
-            {{ totalSearch }}
+          <h6>Impayés  : {{ montants }} Fcfa</h6>
           </div>
         </div>
 

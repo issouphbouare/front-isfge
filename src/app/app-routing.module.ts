@@ -31,6 +31,9 @@ import { AddRemunerationComponent } from './components/finances/remunerations/ad
 import { EditPaiementComponent } from './components/finances/paiements/edit-paiement/edit-paiement.component';
 import { AddPaiementComponent } from './components/finances/paiements/add-paiement/add-paiement.component';
 import { PaiementsComponent } from './components/finances/paiements/paiements/paiements.component';
+import { SeancesComponent } from './components/seances/seances.component';
+import { AddSeanceComponent } from './components/add-seance/add-seance.component';
+import { EditSeanceComponent } from './components/edit-seance/edit-seance.component';
 
 const routes: Routes = [
   {path : "" , component : LoginComponent },
@@ -60,7 +63,7 @@ const routes: Routes = [
  {path : "addPaiement/:id" , component : AddPaiementComponent },
  {path : "editPaiement/:id" , component : EditPaiementComponent },
  {path : "remunerations" , component : RemunerationsComponent },
- {path : "addRemuneration" , component : AddRemunerationComponent },
+ {path : "addRemuneration/:id" , component : AddRemunerationComponent },
  {path : "editRemuneration/:id" , component : EditRemunerationComponent },
  {path : "entrees" , component : EntreesComponent },
  {path : "addEntree" , component : AddEntreeComponent },
@@ -68,6 +71,9 @@ const routes: Routes = [
  {path : "depenses" , component : DepensesComponent },
  {path : "addDepense" , component : AddDepenseComponent },
  {path : "editDepense/:id" , component : EditDepenseComponent },
+ {path : "seances" , component : SeancesComponent },
+ {path : "addSeance/:id" , component : AddSeanceComponent },
+ {path : "editSeance/:id" , component : EditSeanceComponent },
 ];
 
 @NgModule({

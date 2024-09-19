@@ -54,20 +54,22 @@
               <th (click)="sortData('eleve.prenom')">Prenom Elv</th>
               <th (click)="sortData('type')">Type Paie</th>
 
-              <th (click)="sortData('mois')">Mois</th>
+              <th (click)="sortData('mois')">Mois / libéllé</th>
 
               <th (click)="sortData('montant')">Montant</th>
+              <th (click)="sortData('user.username')">Fait par</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let p of donnees">
-              <td>{{ p.datePaiement }}</td>
+              <td>{{ p.datePaiement | date:'dd-MM-yyyy'}}</td>
               <td>{{ p.eleve.matricule }}</td>
               <td>{{ p.eleve.nom }}</td>
               <td>{{ p.eleve.prenom }}</td>
               <td>{{ p.type }}</td>
               <td>{{ p.mois}}</td>
               <td>{{ p.montant }}</td>
+              <td>{{ p.user.username }}</td>
 
               <td>
                 <button
@@ -91,7 +93,7 @@
             <h6>Total :</h6>
           </div>
           <div class="col-md-2" style="background-color: rgb(227, 232, 232)">
-            {{ totalSearch }}
+            {{ montants }} Fcfa
           </div>
         </div>
 

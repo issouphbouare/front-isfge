@@ -18,7 +18,11 @@ export class AddClasseComponent implements OnInit {
   public pages : Array<number>=[];
   public url: string='';
   form : FormGroup= new FormGroup({});
-
+  cycles: string[] = [
+    'Préscolaire', '1er Cycle', '2e Cycle'];
+  niveaux: string[] = [
+    '00', '01', '02', '03', '04', '05',
+    '06', '07', '08', '09'];
 
 
   constructor(private http: HttpClient,private route:ActivatedRoute,

@@ -1,1 +1,128 @@
-<p>entrees works!</p>
+<div class="container">
+  <div class="col-md-12 mt-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-6">
+            <a routerLink="/addEntree" class="btn btn-primary float-right"
+              ><i class="bi bi-plus"></i
+            ></a>
+            <a class="btn btn-light float-right"><h4>Autres Entrées d'Argent</h4></a>
+          </div>
+
+          <div class="col-md-6">
+            <div class="row justify-content-end">
+              <div class="col-auto">
+                <input
+                  type="text" style="width: 90px;"
+                  [(ngModel)]="annee"
+                  (input)="search()"
+                  placeholder="Entrez votre mot-clé"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-end">
+          <div class="col-auto">
+            <input
+              type="text"
+              [(ngModel)]="keyword"
+              (input)="search()"
+              placeholder="Entrez votre mot-clé"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped" *ngIf="donnees">
+          <thead>
+            <tr *ngIf="totalSearch == 0">
+              <h2 style="text-align: center" class="alert alert-danger">
+                aucune entrée trouvée !!!
+              </h2>
+            </tr>
+            <tr *ngIf="totalSearch != 0"></tr>
+            <tr *ngIf="totalSearch != 0">
+              <th (click)="sortData('dateEntree')">Date</th>
+
+              <th (click)="sortData('libelle')">Libéllé</th>
+
+              <th (click)="sortData('montant')">Montant</th>
+              <th (click)="sortData('user.username')">Fait par</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of donnees">
+              <td>{{ p.dateEntree | date:'dd-MM-yyyy'}}</td>
+              <td>{{ p.libelle }}</td>
+              <td>{{ p.montant }}</td>
+              <td>{{ p.user.username }}</td>
+
+              <td>
+                <button
+                  [routerLink]="['/editEntree', p.id]"
+                  class="btn btn-light"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </td>
+              <td>
+                <button (click)="onDelete(p.id)" class="btn btn-light">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row" *ngIf="totalSearch != 0">
+          <div class="col-md-8"></div>
+          <div class="col-md-2" style="background-color: rgb(227, 232, 232)">
+            <h6>Total :</h6>
+          </div>
+          <div class="col-md-2" style="background-color: rgb(227, 232, 232)">
+            {{ montants }} Fcfa
+          </div>
+        </div>
+
+        <div class="row" *ngIf="totalSearch != 0">
+          <div class="col-md-12">
+            <ul *ngIf="pages" class="pagination float-right">
+              <li class="page-link" style="margin-right: 10px">
+                {{ nbPage }} page(s)
+              </li>
+              <li
+                class="page-link clickable sp"
+                (click)="goToPrevious()"
+                *ngIf="currentPage > 0"
+              >
+                <i class="bi bi-chevron-double-left"></i>
+              </li>
+              <li
+                class="page-item"
+                [ngClass]="i == currentPage ? 'active' : ''"
+                *ngFor="let p of pages; let i = index"
+              >
+                <a
+                  class="page-link clickable sp"
+                  *ngIf="i >= currentPage - 2 && i <= currentPage + 2"
+                  (click)="goToPage(i)"
+                  >{{ i + 1 }}</a
+                >
+              </li>
+              <li
+                class="page-link clickable sp"
+                (click)="goToNext()"
+                *ngIf="currentPage < nbPage - 1"
+              >
+                <i class="bi bi-chevron-double-right"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

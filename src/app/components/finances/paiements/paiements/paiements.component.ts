@@ -18,6 +18,7 @@ export class PaiementsComponent {
   urlDownload: string='';
   idAv: number =0;
   totalSearch:number=0;
+  montants:number=0;
   public currentPage: number=0;
     public size : number=6;
     public nbPage : number=0;
@@ -89,6 +90,7 @@ export class PaiementsComponent {
         this.pages = new Array<number>(this.nbPage);
         this.donnees = data.content;
         console.log(this.donnees)
+        this.getMontant()
       }, err => {
         console.log(err);
       });
@@ -104,7 +106,12 @@ export class PaiementsComponent {
       this.sort=column;
       this.onSearch();
     }
-
+  getMontant(){
+    this.montants=0;
+    this.donnees.forEach((e :any) => {
+      this.montants+=e.montant
+    });
+  }
   }
 
 
