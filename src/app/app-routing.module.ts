@@ -34,9 +34,15 @@ import { PaiementsComponent } from './components/finances/paiements/paiements/pa
 import { SeancesComponent } from './components/seances/seances.component';
 import { AddSeanceComponent } from './components/add-seance/add-seance.component';
 import { EditSeanceComponent } from './components/edit-seance/edit-seance.component';
+import { MatieresComponent } from './components/admin/matiere/matieres/matieres.component';
+import { AddMatiereComponent } from './components/admin/matiere/add-matiere/add-matiere.component';
+import { EditMatiereComponent } from './components/admin/matiere/edit-matiere/edit-matiere.component';
+import { SeriesComponent } from './components/admin/serie/series/series.component';
+import { AddSerieComponent } from './components/admin/serie/add-serie/add-serie.component';
+import { EditSerieComponent } from './components/admin/serie/edit-serie/edit-serie.component';
 
 const routes: Routes = [
-  {path : "" , component : LoginComponent },
+  {path : "" , component : DashboardComponent },
  {path : "login" , component : LoginComponent },
  {path :"addUser" , component : AddUserComponent},
  {path :"editUser/:id" , component : EditUserComponent},
@@ -56,6 +62,12 @@ const routes: Routes = [
  {path : "annees" , component : AnneesComponent },
  {path : "addAnnee" , component : AddAnneeComponent },
  {path : "editAnnee/:id" , component : EditAnneeComponent },
+ {path : "matieres" , component : MatieresComponent },
+ {path : "addMatiere" , component : AddMatiereComponent },
+ {path : "editMatiere/:id" , component : EditMatiereComponent },
+ {path : "series" , component : SeriesComponent },
+ {path : "addSerie" , component : AddSerieComponent },
+ {path : "editSerie/:id" , component : EditSerieComponent },
  {path : "enseignants" , component : EnseignantsComponent },
  {path : "addEnseignant" , component : AddEnseignantComponent },
  {path : "editEnseignant/:id" , component : EditEnseignantComponent },

@@ -48,6 +48,9 @@ import { EditSeanceComponent } from './components/edit-seance/edit-seance.compon
 import { MatieresComponent } from './components/admin/matiere/matieres/matieres.component';
 import { AddMatiereComponent } from './components/admin/matiere/add-matiere/add-matiere.component';
 import { EditMatiereComponent } from './components/admin/matiere/edit-matiere/edit-matiere.component';
+import { SeriesComponent } from './components/admin/serie/series/series.component';
+import { AddSerieComponent } from './components/admin/serie/add-serie/add-serie.component';
+import { EditSerieComponent } from './components/admin/serie/edit-serie/edit-serie.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +95,10 @@ import { EditMatiereComponent } from './components/admin/matiere/edit-matiere/ed
     EditSeanceComponent,
     MatieresComponent,
     AddMatiereComponent,
-    EditMatiereComponent
+    EditMatiereComponent,
+    SeriesComponent,
+    AddSerieComponent,
+    EditSerieComponent
   ],
   imports: [
     BrowserModule,

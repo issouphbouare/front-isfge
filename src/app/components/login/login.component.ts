@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorageService.getUser().roles;
         this.reloadPage();
-        
+
       }, err => {
         alert("login ou mot de passe erronés")
       });

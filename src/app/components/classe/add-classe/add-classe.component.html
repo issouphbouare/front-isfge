@@ -30,13 +30,20 @@
                                     <option *ngFor="let c of cycles" [value]="c">{{ c }}</option>
                                   </select>
                                      <p style="color: brown;" *ngIf="!form.controls['cycle'].valid"> (Champ obligatoire * ) </p>
+                                  <label>Serie</label>
+                                  <select formControlName="serie" class="form-control"
+                                  [(ngModel)]="selectedSerie" (change)="getSerieCur()"  required>
+                                    <option value="" disabled>Sélectionner une serie</option>
+                                    <option *ngFor="let c of series" [value]="c.id">{{ c.libelle }}</option>
+                                  </select>
+                                  <p style="color: brown;" *ngIf="!form.controls['niveau'].valid"> (Champ obligatoire * ) </p>
+
                                   <label>Niveau</label>
                                   <select formControlName="niveau" class="form-control" required>
                                     <option value="" disabled>Sélectionner un niveau</option>
                                     <option *ngFor="let c of niveaux" [value]="c">{{ c }}</option>
                                   </select>
                                   <p style="color: brown;" *ngIf="!form.controls['niveau'].valid"> (Champ obligatoire * ) </p>
-
 
                                  </div>
                                  <br>

@@ -4,8 +4,8 @@
           <div class="card-header">
               <div class="row">
                   <div class="col-md-4">
-                      <a routerLink="/addMatiere" class="btn btn-primary float-right"><i class="bi bi-plus"></i></a>
-                      <a  class="btn btn-light float-right"><h4>Matieres </h4></a>
+                      <a routerLink="/addSerie" class="btn btn-primary float-right"><i class="bi bi-plus"></i></a>
+                      <a  class="btn btn-light float-right"><h4>Serie </h4></a>
                   </div>
 
                   <div class="col-md-8">
@@ -28,7 +28,7 @@
           <div class="card-body">
               <table class="table table-striped" *ngIf="donnees">
                   <thead>
-                      <tr *ngIf="totalSearch==0"><h2 style="text-align: center;" class="alert alert-danger">aucune matiere trouvée !!!</h2></tr>
+                      <tr *ngIf="totalSearch==0"><h2 style="text-align: center;" class="alert alert-danger">aucune serie trouvée !!!</h2></tr>
                       <tr *ngIf="totalSearch!=0">
                         <tr *ngIf="totalSearch!=0">
                           <th (click)="sortData('libelle')">Libéllés</th>
@@ -44,7 +44,7 @@
                           <td>{{p.ref}}</td>
 
                           <td>
-                              <button [routerLink]="['/editMatiere',p.id]"
+                              <button [routerLink]="['/editSerie',p.id]"
                                   class="btn btn-light"><i class="bi bi-pencil"></i></button>
                             <!--  <button (click)="onDelete(p.id)" class="btn btn-light"><i class="bi bi-trash"></i></button>-->
 

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { EnseignantService } from 'src/app/services/enseignant.service';
 import { SeanceService } from 'src/app/services/seance.service';
+import { MatiereService } from 'src/app/services/matiere.service';
 
 @Component({
   selector: 'app-add-seance',
@@ -17,6 +18,9 @@ export class AddSeanceComponent implements OnInit {
   public classes: any;
   public classe: any;
   public selectedClasse : any
+  public matieres: any;
+  public matiere: any;
+  public selectedMatiere : any
   public enseignant: any;
   public nbPage : number=0;
   public pages : Array<number>=[];
@@ -25,12 +29,12 @@ export class AddSeanceComponent implements OnInit {
   maxTime: string = '19:00';
   form : FormGroup= new FormGroup({});
 
-
+duree: number[] = [1, 2, 3, 4, 5]
 
   constructor(private http: HttpClient,private route:ActivatedRoute,
     private apiService: SeanceService, private formBuilder:FormBuilder ,
     private router : Router, private enseignantService: EnseignantService,
-    private classeService: ClasseService) { }
+    private classeService: ClasseService, private matiereService: MatiereService) { }
 
   ngOnInit(): void {
     this.form=this.formBuilder.group({
@@ -39,11 +43,11 @@ export class AddSeanceComponent implements OnInit {
       nombreHeure : ['',[Validators.required]],
       enseignant : [''],
       classe : ['',[Validators.required]],
-
     });
     this.url=this.route.snapshot.params['id']
     this.getEnseignantCur();
     this.getClasses();
+    this.getMatieres();
 
   }
 
@@ -59,6 +63,7 @@ export class AddSeanceComponent implements OnInit {
     console.log(this.url);
     this.form.value.enseignant=this.enseignant;
     this.form.value.classe=this.classe
+    this.form.value.matiere=this.matiere
     this.apiService.Create(this.form.value).
     subscribe( (data: any) => {
       console.log(data);
@@ -96,6 +101,26 @@ getClasse(){
   this.classeService.getById(this.selectedClasse)
   .subscribe((data: any)=>{
   this.classe=data;
+
+}, err=>{
+  console.log(err);
+})
+}
+
+getMatieres(){
+  this.matiereService.getAll()
+  .subscribe((data: any)=>{
+  this.matieres=data;
+  console.log(this.matieres);
+}, err=>{
+  console.log(err);
+})
+}
+
+getMatiere(){
+  this.matiereService.getById(this.selectedMatiere)
+  .subscribe((data: any)=>{
+  this.matiere=data;
 
 }, err=>{
   console.log(err);

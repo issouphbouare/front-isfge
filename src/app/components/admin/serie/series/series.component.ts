@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatiereService } from 'src/app/services/matiere.service';
+import { SerieService } from 'src/app/services/serie.service';
 
 @Component({
-  selector: 'app-matieres',
-  templateUrl: './matieres.component.html',
-  styleUrls: ['./matieres.component.css']
+  selector: 'app-series',
+  templateUrl: './series.component.html',
+  styleUrls: ['./series.component.css']
 })
-export class MatieresComponent {
+export class SeriesComponent {
   public donnees: any;
   public av=1;
   keyword: string = '';
@@ -24,7 +24,7 @@ export class MatieresComponent {
 
 
   constructor(private http: HttpClient,
-    private apiService: MatiereService
+    private apiService: SerieService
     ,
     private router : Router) { }
 
@@ -52,7 +52,7 @@ export class MatieresComponent {
     this.onSearch();
   }
   onDelete(a: any){
-    if(confirm("Voulez-vous vraiment supprimer cette matiere ?")){
+    if(confirm("Voulez-vous vraiment supprimer cette serie ?")){
       console.log();
       this.apiService.delete(a)
       .subscribe( data=>{
@@ -94,5 +94,6 @@ export class MatieresComponent {
     }
 
   }
+
 
 

@@ -34,14 +34,20 @@
                         *ngIf="!form.controls['classe'].valid"> (Champ
                         obligatoire * ) </p>
                                  <label>Matiere</label>
-                                  <input type="text" formControlName="matiere" class="form-control" >
-                                  <p style="color: brown;" *ngIf="!form.controls['matiere'].valid"> (Champ obligatoire * ) </p>
+                                 <select class="form-control" (change)="getMatiere()"
+                                 [(ngModel)]="selectedMatiere" formControlName="matiere">
+                                 <option *ngFor="let c of matieres" [value]="c.id">{{
+                                     c.libelle }}</option>
+                             </select>
+                             <p style="color: brown;" *ngIf="!form.controls['matiere'].valid"> (Champ obligatoire * ) </p>
 
                                   <label>Heure Debut</label>
                                   <input type="time" formControlName="heureDebut" class="form-control" >
                                   <p style="color: brown;" *ngIf="!form.controls['heureDebut'].valid"> (Champ obligatoire et heure comprise entre 06h et 19h * ) </p>
                                   <label>Nombres Heures</label>
-                                  <input type="number" formControlName="nombreHeure" min="1" class="form-control">
+                                  <select formControlName="nombreHeure" class="form-control" required>
+                                    <option *ngFor="let c of duree" [value]="c">{{ c }}</option>
+                                  </select>
                                   <p style="color: brown;" *ngIf="!form.controls['nombreHeure'].valid"> (Champ obligatoire * ) </p>
 
 

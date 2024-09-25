@@ -14,28 +14,23 @@ export class DashboardService {
 
 
   constructor(private http: HttpClient, private variableGService: VariableGService
-    , private TokenStorageService: TokenStorageService
   ) { }
 
 
   getPersonnels():Observable<Apiresponse>{
-    const headers = this.TokenStorageService.getHeaders();
-    return this.http.get<Apiresponse>(this.baseUrl+"/personnels", { headers });
+    return this.http.get<Apiresponse>(this.baseUrl+"/personnels");
   }
 
   getEleves():Observable<Apiresponse>{
-    const headers = this.TokenStorageService.getHeaders();
-    return this.http.get<Apiresponse>(this.baseUrl+"/eleves", { headers });
+    return this.http.get<Apiresponse>(this.baseUrl+"/eleves");
   }
 
   getCaisses():Observable<Apiresponse>{
-    const headers = this.TokenStorageService.getHeaders();
-    return this.http.get<Apiresponse>(this.baseUrl+"/caisses", { headers });
+    return this.http.get<Apiresponse>(this.baseUrl+"/caisses");
   }
 
   getRetards():Observable<Apiresponse>{
-    const headers = this.TokenStorageService.getHeaders();
-    return this.http.get<Apiresponse>(this.baseUrl+"/retards", { headers });
+    return this.http.get<Apiresponse>(this.baseUrl+"/retards");
   }
 
 

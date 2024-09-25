@@ -13,7 +13,7 @@
                           <ul class="navbar-nav me-auto">
 
                               <li class="nav-item">
-                                  <a class="navbar-brand" routerLink="/dashboard" *ngIf="isLoggedIn">Dashboard</a>
+                                  <a class="navbar-brand" routerLink="/dashboard" >Dashboard</a>
                               </li>
                               <li class="nav-item">
                                   <a class="navbar-brand" routerLink="/classes" *ngIf="isLoggedIn">Classes</a>
@@ -66,16 +66,29 @@
                                       </li>
                                       <li><a class="dropdown-item" routerLink="/annees">Années Scolaires</a></li>
                                       <li>
+                                        <li>
+                                          <hr class="dropdown-divider">
+                                      </li>
+                                      <li><a class="dropdown-item" routerLink="/matieres">Matieres</a></li>
+                                      <li>
+                                        <li>
+                                          <hr class="dropdown-divider">
+                                      </li>
+                                      <li><a class="dropdown-item" routerLink="/series">Series</a></li>
+                                      <li>
 
                                   </ul>
                               </li>
                           </ul>
                           <form class="d-flex">
                               <ul class="navbar-nav">
+                                <li class="nav-item" *ngIf="!isLoggedIn">
+                                  <a class="navbar-brand" routerLink="/login" >Se connecter</a>
+                              </li>
                                   <li class="button">
                                       <a class="navbar-brand"></a>
                                   </li>
-                                  <li class="nav-item dropdown">
+                                  <li class="nav-item dropdown" *ngIf="isLoggedIn">
                                       <a class="navbar-brand" href="#" id="navbarScrollingDropdown" role="button"
                                           data-bs-toggle="dropdown" aria-expanded="false">
                                           {{username}} <i *ngIf="isLoggedIn" class="bi bi-person"></i>

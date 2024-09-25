@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatiereService } from 'src/app/services/matiere.service';
+import { SerieService } from 'src/app/services/serie.service';
 
 @Component({
-  selector: 'app-add-matiere',
-  templateUrl: './add-matiere.component.html',
-  styleUrls: ['./add-matiere.component.css']
+  selector: 'app-add-serie',
+  templateUrl: './add-serie.component.html',
+  styleUrls: ['./add-serie.component.css']
 })
-export class AddMatiereComponent implements OnInit {
+export class AddSerieComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder,
-    private apiService: MatiereService,
+    private apiService: SerieService,
     private  router:Router) { }
     form : FormGroup= new FormGroup({});
 
@@ -19,7 +19,7 @@ export class AddMatiereComponent implements OnInit {
   ngOnInit(): void {
     this.form=this.formBuilder.group({
       libelle : ['', [Validators.required, Validators.pattern("([a-zA-Z]).{1,}")]],
-      ref : ['', [Validators.pattern("([a-zA-Z]).{1,}")]],
+      ref : ['', [Validators.pattern("([a-zA-Z]).{0,}")]],
 
     });
 
@@ -29,16 +29,17 @@ export class AddMatiereComponent implements OnInit {
     console.log(this.form.value);
     this.apiService.Create(this.form.value).
     subscribe( data => {
-        alert("Matiere : "+this.form.value.libelle+
+        alert("Serie : "+this.form.value.libelle+
         "  ajoutée avec succes  !");
-        this.router.navigate(['matieres']);
+        this.router.navigate(['series']);
       },err=>{
-        alert("Ce libelle de matiere existe deja !");
+        alert("Ce libelle de serie existe deja !");
       });
 
 }
 
 }
+
 
 
 
