@@ -6,11 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class VariableGService {
   api: string="http://localhost:8080"
-  apiDist1: string="http://62.171.169.168:8080"
-  apiDist: string="https://backetat-production.up.railway.app"
+  apiDist1: string="http://85.217.171.59:8080"
+  apiDist: string="https://pelengana.kalanso.site"
 
   constructor(private http: HttpClient) { }
   getApi(){
-    return this.api;
+    return this.apiDist;
   }
 }

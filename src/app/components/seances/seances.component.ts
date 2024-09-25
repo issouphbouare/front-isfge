@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnneeService } from 'src/app/services/annee.service';
 import { SeanceService } from 'src/app/services/seance.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-seances',
@@ -25,15 +26,18 @@ export class SeancesComponent {
     public size : number=150;
     public nbPage : number=0;
     public pages : Array<number>=[];
+    modRole! : boolean
 
 
   constructor(private http: HttpClient,private anneeService: AnneeService,
-    private apiService: SeanceService
+    private tokenStorageService: TokenStorageService, private apiService: SeanceService
     ,
     private router : Router) { }
 
 
   ngOnInit(): void {
+    this.modRole= this.tokenStorageService.getIsMod(this.tokenStorageService.getUser().roles)
+
     this.av=1;
     this.onSearch()
     this.getAnneeCur();

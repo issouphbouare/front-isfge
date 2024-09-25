@@ -16,6 +16,7 @@ user : any;
 visible : string='';
 visible1 : string='';
 visible2 : string='';
+modRole!:boolean
 
 
 
@@ -26,7 +27,9 @@ constructor(private formBuilder:FormBuilder,
   private  router:Router ,private route: ActivatedRoute) { }
   formEdit : FormGroup= new FormGroup({});
 
-ngOnInit() { this.visible='password'; this.visible1='password'; this.visible2='password'
+ngOnInit() {
+  this.modRole= this.tokenStorageService.getIsMod(this.tokenStorageService.getUser().roles)
+  this.visible='password'; this.visible1='password'; this.visible2='password'
   this.username=this.route.snapshot.params['id']
   this.getUser()
 

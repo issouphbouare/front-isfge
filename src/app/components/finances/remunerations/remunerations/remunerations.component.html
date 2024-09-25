@@ -4,7 +4,7 @@
       <div class="card-header">
         <div class="row">
           <div class="col-md-6">
-            <a routerLink="/enseignants" class="btn btn-light float-right"
+            <a *ngIf="!modRole" routerLink="/enseignants" class="btn btn-light float-right"
               ><i class="bi bi-arrow-left"></i
             ></a>
             <a class="btn btn-light float-right"><h4>Rémunérations Personnels</h4></a>
@@ -71,7 +71,7 @@
               <td>{{ p.user.username }}</td>
 
               <td>
-                <button
+                <button [disabled]="!modRole"
                   [routerLink]="['/editRemuneration', p.id]"
                   class="btn btn-light"
                 >
@@ -79,7 +79,7 @@
                 </button>
               </td>
               <td>
-                <button (click)="onDelete(p.id)" class="btn btn-light">
+                <button [disabled]="!modRole" (click)="onDelete(p.id)" class="btn btn-light">
                   <i class="bi bi-trash"></i>
                 </button>
               </td>

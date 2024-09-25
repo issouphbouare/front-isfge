@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnneeService } from 'src/app/services/annee.service';
 import { ClasseService } from 'src/app/services/classe.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 @Component({
   selector: 'app-classes',
   templateUrl: './classes.component.html',
@@ -22,15 +23,19 @@ export class ClassesComponent {
     public size : number=15;
     public nbPage : number=0;
     public pages : Array<number>=[];
+    modRole: boolean=false
 
 
   constructor(private http: HttpClient,private anneeService: AnneeService,
-    private apiService: ClasseService
+    private tokenStorageService:TokenStorageService,
+     private apiService: ClasseService
     ,
     private router : Router) { }
 
 
   ngOnInit(): void {
+    this.modRole= this.tokenStorageService.getIsMod(this.tokenStorageService.getUser().roles)
+
     this.av=1;
     this.onSearch()
     this.getAnneeCur();

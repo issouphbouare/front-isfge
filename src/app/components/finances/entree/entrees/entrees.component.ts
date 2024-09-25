@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnneeService } from 'src/app/services/annee.service';
 import { EntreeService } from 'src/app/services/entree.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-entrees',
@@ -24,15 +25,17 @@ export class EntreesComponent {
     public size : number=6;
     public nbPage : number=0;
     public pages : Array<number>=[];
-
+    modRole!:boolean
 
   constructor(private http: HttpClient,private anneeService: AnneeService,
-    private apiService: EntreeService
+   private tokenStorageService: TokenStorageService, private apiService: EntreeService
     ,
     private router : Router) { }
 
 
   ngOnInit(): void {
+    this.modRole= this.tokenStorageService.getIsMod(this.tokenStorageService.getUser().roles)
+
     this.av=1;
     this.onSearch()
     this.getAnneeCur();

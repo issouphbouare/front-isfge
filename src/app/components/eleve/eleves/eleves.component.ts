@@ -1,3 +1,4 @@
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,6 +11,7 @@ import { EleveService } from 'src/app/services/eleve.service';
   styleUrls: ['./eleves.component.css']
 })
 export class ElevesComponent {
+  public modRole:boolean=false
   public donnees: any;
   public av=1;
   keyword: string = '';
@@ -27,12 +29,13 @@ export class ElevesComponent {
 
 
   constructor(private http: HttpClient,private anneeService: AnneeService,
-    private apiService: EleveService
+    private apiService: EleveService,private tokenStorageService:TokenStorageService
     ,
     private router : Router) { }
 
 
   ngOnInit(): void {
+    this.modRole= this.tokenStorageService.getIsMod(this.tokenStorageService.getUser().roles)
     this.av=1;
     this.onSearch()
     this.getAnneeCur();

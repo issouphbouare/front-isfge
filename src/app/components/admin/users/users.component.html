@@ -41,19 +41,20 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let p of donnees">
-                                <td>{{p.username}}</td>
-                                <td>{{p.email}}</td>
-                                <td>
+                                <td *ngIf="p.username!='visiteur'">{{p.username}}</td>
+                                <td *ngIf="p.username!='visiteur'">{{p.email}}</td>
+                                <td *ngIf="p.username!='visiteur'">
                                     <h6  *ngIf="p.roles==''">AUCUN</h6>
                                     <h6 *ngFor="let r of p.roles">
                                     {{r.name}}</h6>
                                 </td>
-                                <td>
+                                <td *ngIf="p.username!='visiteur'">
                                     <button [routerLink]="['/editUser',p.id]"
                                         class="btn btn-light"><i class="bi bi-pencil"></i></button>
-                                    <button (click)="onDelete(p.id)" class="btn btn-light"><i class="bi bi-trash"></i></button>
+                                      </tr>
+                                  <!-- <td *ngIf="p.username!='visiteur'"> <button (click)="onDelete(p.id)" class="btn btn-light"><i class="bi bi-trash"></i></button> </td>-->
 
-                            </tr>
+
                         </tbody>
                     </table>
                     <div class="row" *ngIf="totalSearch!=0">

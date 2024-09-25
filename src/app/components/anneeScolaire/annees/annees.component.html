@@ -31,10 +31,9 @@
                       <tr *ngIf="totalSearch==0"><h2 style="text-align: center;" class="alert alert-danger">aucune année trouvée !!!</h2></tr>
                       <tr *ngIf="totalSearch!=0">
                         <tr *ngIf="totalSearch!=0">
-                          <th (click)="sortData('libelle')">Libelles</th>
+                          <th (click)="sortData('libelle')">Libéllés</th>
 
-                          <th (click)="sortData('ref')">Email</th>
-                          <th>References</th>
+                          <th (click)="sortData('ref')">References</th>
 
 
                       </tr>
@@ -47,7 +46,7 @@
                           <td>
                               <button [routerLink]="['/editAnnee',p.id]"
                                   class="btn btn-light"><i class="bi bi-pencil"></i></button>
-                              <button (click)="onDelete(p.id)" class="btn btn-light"><i class="bi bi-trash"></i></button>
+                            <!--  <button (click)="onDelete(p.id)" class="btn btn-light"><i class="bi bi-trash"></i></button>-->
 
                       </tr>
                   </tbody>

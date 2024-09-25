@@ -14,6 +14,7 @@ export class TokenStorageService {
 
   isAdmin = false;
   isUser = false;
+  isMod = false;
 
   signOut(): void {
     window.sessionStorage.clear();
@@ -39,9 +40,9 @@ export class TokenStorageService {
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
-      
+
       return JSON.parse(user);
-      
+
     }
 
     return {};
@@ -64,6 +65,7 @@ export class TokenStorageService {
     });
   }
   getIsAdmin(roles:any){
+    this.isAdmin=false
     for (let i = 0; i < roles.length; i++) {
       if (roles[i].name === "ROLE_ADMIN") {
         this.isAdmin = true;
@@ -74,13 +76,27 @@ export class TokenStorageService {
   }
 
   getIsUser(roles:any){
+    this.isUser=false
     for (let i = 0; i < roles.length; i++) {
-      if (roles[i].name === "ROLE_USER") {
+      if (roles[i].name !== "ROLE_ADMIN" && roles[i].name === "ROLE_USER" ) {
         this.isUser = true;
-        break
+
       }
     }
     return this.isUser
+  }
+
+  getIsMod(roles:any){
+    this.isMod=true
+    for (let i = 0; i < roles.length; i++) {
+      if (roles[i].name !== "ROLE_ADMIN" && roles[i].name !== "ROLE_USER"
+        && roles[i].name === "ROLE_MODERATOR"
+       ) {
+        this.isMod = false;
+
+      }
+    }
+    return this.isMod
   }
 
 }

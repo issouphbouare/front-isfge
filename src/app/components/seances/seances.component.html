@@ -89,7 +89,7 @@
                 </button>
               </td>-->
               <td>
-                <button (click)="onDelete(p.id)" class="btn btn-light">
+                <button [disabled]="!modRole" (click)="onDelete(p.id)" class="btn btn-light">
                   <i class="bi bi-trash"></i>
                 </button>
               </td>

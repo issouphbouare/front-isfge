@@ -4,7 +4,7 @@
       <div class="card-header">
         <div class="row">
           <div class="col-md-2">
-            <a routerLink="/addClasse" class="btn btn-primary float-right"
+            <a *ngIf="modRole" routerLink="/addClasse" class="btn btn-primary float-right"
               ><i class="bi bi-plus"></i
             ></a>
             <a class="btn btn-light float-right"><h4>Classes</h4></a>
@@ -62,18 +62,18 @@
               <td>{{ p.anneeScolaire.libelle }}</td>
 
               <td>
-                <button
+                <button [disabled]="!modRole"
                   [routerLink]="['/editClasse', p.id]"
                   class="btn btn-light"
                 >
                   <i class="bi bi-pencil"></i>
                 </button>
               </td>
-              <td>
+              <!-- <td>
                 <button (click)="onDelete(p.id)" class="btn btn-light">
                   <i class="bi bi-trash"></i>
                 </button>
-              </td>
+              </td> -->
             </tr>
           </tbody>
         </table>

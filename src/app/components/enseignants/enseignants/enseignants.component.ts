@@ -1,3 +1,4 @@
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -23,15 +24,18 @@ export class EnseignantsComponent {
     public size : number=30;
     public nbPage : number=0;
     public pages : Array<number>=[];
+    modRole!:boolean
 
 
   constructor(private http: HttpClient,private anneeService: AnneeService,
-    private apiService: EnseignantService
+    private tokenStorageService : TokenStorageService, private apiService: EnseignantService
     ,
     private router : Router) { }
 
 
   ngOnInit(): void {
+    this.modRole= this.tokenStorageService.getIsMod(this.tokenStorageService.getUser().roles)
+
     this.av=1;
     this.onSearch()
     this.getAnneeCur();

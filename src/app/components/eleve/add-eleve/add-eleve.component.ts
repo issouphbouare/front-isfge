@@ -40,7 +40,7 @@ export class AddEleveComponent implements OnInit {
       dateNaissance: ['', [Validators.required, this.validateDateNaissance]],
       lieuNaissance: ['', [Validators.required, Validators.pattern("([a-zA-Z]).{1,}")]],
       nomTuteur : ['',[Validators.required]],
-      telTuteur: ['', [Validators.required, Validators.pattern('^[5-9][0-9]{7}$'),]],
+      telTuteur: ['', [Validators.pattern('^[5-9][0-9]{7}$'),]],
       modePaiement : ['',[Validators.required]],
       inscription : ['',[Validators.pattern('^[0-9]*$'),]],
       relicat : ['',[ Validators.pattern('^[0-9]*$'),]],

@@ -12,6 +12,7 @@ export class ProfilComponent {
   public donnee : any;
   private url : string='';
   editing: boolean=true
+  modRole!: boolean
 
   constructor(private formBuilder:FormBuilder,
     private apiService: UserService,private tokenStorageService: TokenStorageService,
@@ -21,6 +22,7 @@ export class ProfilComponent {
 
 
   ngOnInit(): void {
+    this.modRole= this.tokenStorageService.getIsMod(this.tokenStorageService.getUser().roles)
     this.form=this.formBuilder.group({
       username : ['',[Validators.required]],
       email : ['',[Validators.required]],

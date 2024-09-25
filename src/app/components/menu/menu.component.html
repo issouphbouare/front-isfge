@@ -29,13 +29,13 @@
                             </li>
 
 
-                              <li class="nav-item dropdown" *ngIf="isUser || isAdmin">
+                              <li class="nav-item dropdown">
                                   <a class="navbar-brand" href="#" id="navbarScrollingDropdown" *ngIf="isLoggedIn"
                                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                       Finances
                                   </a>
                                   <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                      <li><a class="dropdown-item" routerLink="/paiements">Paiments Eleves</a></li>
+                                      <li><a class="dropdown-item" routerLink="/paiements">Paiements Eleves</a></li>
                                       <li>
                                           <hr class="dropdown-divider">
                                       </li>
@@ -66,11 +66,7 @@
                                       </li>
                                       <li><a class="dropdown-item" routerLink="/annees">Années Scolaires</a></li>
                                       <li>
-                                        <li>
-                                          <hr class="dropdown-divider">
-                                      </li>
-                                      <li><a class="dropdown-item" routerLink="/matieres">Matieres</a></li>
-                                      <li>
+
                                   </ul>
                               </li>
                           </ul>

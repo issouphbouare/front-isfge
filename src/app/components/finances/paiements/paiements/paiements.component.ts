@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnneeService } from 'src/app/services/annee.service';
 import { MensualiteService } from 'src/app/services/mensualite.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 @Component({
   selector: 'app-paiements',
   templateUrl: './paiements.component.html',
@@ -23,15 +24,17 @@ export class PaiementsComponent {
     public size : number=6;
     public nbPage : number=0;
     public pages : Array<number>=[];
-
+    modRole!:boolean
 
   constructor(private http: HttpClient,private anneeService: AnneeService,
-    private apiService: MensualiteService
+    private tokenStorageService :TokenStorageService, private apiService: MensualiteService
     ,
     private router : Router) { }
 
 
   ngOnInit(): void {
+    this.modRole= this.tokenStorageService.getIsMod(this.tokenStorageService.getUser().roles)
+
     this.av=1;
     this.onSearch()
     this.getAnneeCur();

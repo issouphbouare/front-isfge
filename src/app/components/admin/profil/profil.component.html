@@ -65,7 +65,7 @@
 
                                </div><Br/>
                               <div class="form-group card mt-3" *ngIf="!editing" >
-                               <button type="submit" (click)="onEdit()"
+                               <button [disabled]="!modRole" type="submit" (click)="onEdit()"
                                     class="btn btn-secondary px-4">Modifier</button>
                           </div>
                           </div>
