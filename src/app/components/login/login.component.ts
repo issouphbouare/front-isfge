@@ -67,13 +67,16 @@ export class LoginComponent implements OnInit {
   });
 }
 
-onVisible(){this.visible='text'}
-onNotVisible(){this.visible='password'}
 
 
 
-  togglePasswordVisibility() {
-    this.isPasswordVisible = !this.isPasswordVisible;
+
+
+
+  //visible: string = 'password';
+
+  toggleVisibility() {
+    this.visible = this.visible === 'password' ? 'text' : 'password';
   }
 }
 
