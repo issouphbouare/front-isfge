@@ -1,39 +1,76 @@
-<div class="container-fluid">
-    <div class="row main-content bg-light text-center justify-content-center">
-      <div class="col-md-4 col-12 text-center company__info mb-3">
-        <span class="company__logo">
-          <h2>
-            <img src="../assets/images/logo/logo.jpg" alt="hugenerd" width="220" height="220" class="img-fluid" />
-          </h2>
-        </span>
-        <h6 class="company_title">La référence de l'excellence du continent</h6>
-      </div>
+<div class="container">
+  <div class="card">
+      <div class="container mt-3">
+          <div class="row justify-content-md-center">
+              <div class="col-md-6">
+                  <div class="card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-md-4">
+                                   <button [routerLink]="['/']" class="btn btn-secondary">Accueil</button>
+                              </div>
+                              <div class="col-md-6">
+                                  <h4>CONNEXION </h4>
+                              </div>
+                              <div class="col-md-2">
+                                  <!-- <a routerLink="/addUser" class="btn btn-secondary">S'inscrire</a> -->
+                              </div>
+                          </div>
 
-      <div class="col-md-8 col-12 login_form">
-        <div class="container-fluid">
-          <div class="row">
-            <h2>Connexion</h2>
+                      </div>
+                      <div class="card-body">
+                          <form [formGroup]="login" (ngSubmit)="onSubmit()">
+                              <div class="form-group">
+                                  <div class="row">
+                                      <div class="col-md-11">
+                                          <input type="text" placeholder="Username " formControlName="username" class="form-control" p>
+                                      </div>
+                                      <div class="col-md-1"></div>
+                                  </div>
+                                  <p style="color: brown;" *ngIf="!login.controls['username'].valid">
+                                      (Champ obligatoire * ) </p>
+
+                              </div> <br>
+                              <div class="form-group">
+
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <div class="input-group">
+                                              <input [type]="visible" formControlName="password" class="form-control" placeholder="Mot de passe ">
+                                              <div class="input-group-append">
+                                                  <button *ngIf="visible == 'password'" type="button"
+                                                      (click)="onVisible()" class="btn btn-light">
+                                                      <i class="bi bi-eye"></i>
+                                                  </button>
+                                                  <button *ngIf="visible == 'text'" type="button"
+                                                      (click)="onNotVisible()" class="btn btn-light">
+                                                      <i class="bi bi-eye-slash"></i>
+                                                  </button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <p style="color: brown;" *ngIf="!login.controls['password'].valid">
+                                      (Champ obligatoire *) </p>
+
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-11">
+                                      <div class="form-group card mt-2">
+                                          <button [disabled]="!login.valid" type="submit"
+                                              class="btn btn-secondary ">Se
+                                              connecter</button>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-1"></div>
+                              </div>
+
+                          </form>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="row">
-            <form [formGroup]="login" (ngSubmit)="onSubmit()">
-              <div class="row mb-3">
-                <input type="text" formControlName="username"  class="form-control" placeholder="Username">
-              </div>
-              <div class="row mb-3 position-relative">
-                <input [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password" class="form-control" placeholder="Mot de passe" style="padding-right: 40px;">
-                <i class="fa" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"
-                   (click)="togglePasswordVisibility()"
-                   style="position: absolute; left: 160px; top: 50%; transform: translateY(-50%); cursor: pointer;" *ngIf="!isMobile()">
-                </i>
-              </div>
-
-              <div class="row">
-                <input [disabled]="!login.valid"  type="submit" value="Se connecter" class="btn btn-primary w-100">
-
-              </div>
-            </form>
-          </div>
-        </div>
       </div>
-    </div>
   </div>
+</div>
