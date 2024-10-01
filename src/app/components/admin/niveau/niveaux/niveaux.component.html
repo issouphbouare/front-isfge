@@ -4,8 +4,8 @@
           <div class="card-header">
               <div class="row">
                   <div class="col-md-4">
-                      <a routerLink="/addSerie" class="btn btn-primary float-right"><i class="bi bi-plus"></i></a>
-                      <a  class="btn btn-light float-right"><h4>Serie </h4></a>
+                      <a routerLink="/addNiveau" class="btn btn-primary float-right"><i class="bi bi-plus"></i></a>
+                      <a  class="btn btn-light float-right"><h4>Niveaux </h4></a>
                   </div>
 
                   <div class="col-md-8">
@@ -28,24 +28,22 @@
           <div class="card-body">
               <table class="table table-striped" *ngIf="donnees">
                   <thead>
-                      <tr *ngIf="totalSearch==0"><h2 style="text-align: center;" class="alert alert-danger">aucune serie trouvée !!!</h2></tr>
+                      <tr *ngIf="totalSearch==0"><h2 style="text-align: center;" class="alert alert-danger">aucun niveau trouvé !!!</h2></tr>
                       <tr *ngIf="totalSearch!=0">
                         <tr *ngIf="totalSearch!=0">
                           <th (click)="sortData('libelle')">Libéllés</th>
-                          <th (click)="sortData('ref')">References</th>
-                          <th (click)="sortData('cycle.libelle')">Cycle</th>
-
-
+                          <th (click)="sortData('serie.libelle')">Serie</th>
+                          <th (click)="sortData('serie.cycle.libelle')">Serie</th>
                       </tr>
                   </thead>
                   <tbody>
                       <tr *ngFor="let p of donnees">
                           <td>{{p.libelle}}</td>
-                          <td>{{p.ref}}</td>
-                          <td>{{p.cycle.libelle}}</td>
+                          <td>{{p.serie.libelle}}</td>
+                          <td>{{p.serie.cycle.libelle}}</td>
 
                           <td>
-                              <button [routerLink]="['/editSerie',p.id]"
+                              <button [routerLink]="['/editNiveau',p.id]"
                                   class="btn btn-light"><i class="bi bi-pencil"></i></button>
                             <!--  <button (click)="onDelete(p.id)" class="btn btn-light"><i class="bi bi-trash"></i></button>-->
 

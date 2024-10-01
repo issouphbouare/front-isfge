@@ -1,0 +1,90 @@
+<div class="col-md-12">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mt-8">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-2">
+                <a routerLink="/niveaux" class="btn btn-light float-light"
+                  ><i class="bi bi-arrow-left"></i
+                ></a>
+              </div>
+              <div class="col-md-10">
+                <h4>Ajout de Niveau</h4>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label>Cycle</label>
+                    <select
+                      class="form-control"
+                      (change)="getSeries()"
+                      [(ngModel)]="selectedCycle"
+                      formControlName="cycle"
+                    >
+                      <option *ngFor="let c of cycles" [value]="c.id">
+                        {{ c.libelle }}
+                      </option>
+                    </select>
+                    <p
+                      style="color: brown"
+                      *ngIf="!form.controls['cycle'].valid"
+                    >
+                      (Champ obligatoire * )
+                    </p>
+                    <label>Serie</label>
+                    <select
+                      class="form-control"
+                      (change)="getSerieCur()"
+                      [(ngModel)]="selectedSerie"
+                      formControlName="serie"
+                    >
+                      <option *ngFor="let c of series" [value]="c.id">
+                        {{ c.libelle }}
+                      </option>
+                    </select>
+                    <p
+                      style="color: brown"
+                      *ngIf="!form.controls['serie'].valid"
+                    >
+                      (Champ obligatoire * )
+                    </p>
+
+                    <label>Libéllé</label>
+                    <input
+                      type="text"
+                      formControlName="libelle"
+                      class="form-control"
+                      placeholder="au moins 2 caracteres "
+                    />
+                    <p
+                      style="color: brown"
+                      *ngIf="!form.controls['libelle'].valid"
+                    >
+                      (au moins 2 caracteres )
+                    </p>
+                  </div>
+                  <Br />
+                  <div class="form-group">
+                    <button
+                      [disabled]="!form.valid"
+                      type="submit"
+                      class="btn btn-secondary px-4"
+                    >
+                      Ajouter
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

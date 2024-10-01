@@ -33,8 +33,8 @@ export class EditEleveComponent implements OnInit {
 
   ngOnInit(): void {
     this.form=this.formBuilder.group({
-      prenom: ['', [Validators.required, Validators.pattern("([a-zA-Z]).{1,}")]],
-      nom: ['', [Validators.required, Validators.pattern("([A-Z]){1,}")]],
+      prenom: ['', [Validators.required]],
+      nom: ['', [Validators.required]],
       genre : ['',[Validators.required]],
       dateNaissance: ['', [Validators.required, this.validateDateNaissance]],
       lieuNaissance: ['', [Validators.required, Validators.pattern("([a-zA-Z]).{1,}")]],
@@ -74,7 +74,7 @@ export class EditEleveComponent implements OnInit {
   }
 
   getClasseCur(){
-    this.classeService.getById(this.selectedClasse)
+    this.classeService.getById(this.donnee.classe.id)
     .subscribe((data: any)=>{
     this.classeCur=data;
 

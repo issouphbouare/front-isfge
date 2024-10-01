@@ -28,23 +28,23 @@
                       type="text"
                       formControlName="prenom"
                       class="form-control"
-                      placeholder="au moins 2 caracteres "
+
                     />
                     <p
                       style="color: brown"
                       *ngIf="!form.controls['prenom'].valid"
                     >
-                      (Le premier caractere doit etre une lettre majuscule )
+                      (Champ obligatoire * )
                     </p>
                     <label>Nom</label>
                     <input
                       type="text"
                       formControlName="nom"
                       class="form-control"
-                      placeholder="au moins 2 caracteres "
+
                     />
                     <p style="color: brown" *ngIf="!form.controls['nom'].valid">
-                      (Mettez des lettres majuscules)
+                      (Champ obligatoire *)
                     </p>
                     <label>Telephone</label>
                     <input

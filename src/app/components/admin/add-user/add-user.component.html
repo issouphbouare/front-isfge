@@ -33,13 +33,11 @@
                                               <label>Nom Utilisateur</label>
                                               <input type="text" formControlName="username" class="form-control"
                                                   placeholder="au moins 2 caracteres ">
-                                              <p style="color: brown;" *ngIf="!form.controls['username'].valid"> (au
-                                                  moins 2 caracteres ) </p>
+                                              <p style="color: brown;" *ngIf="!form.controls['username'].valid"> (Champ obligatoire *) </p>
                                               <label>Email</label>
                                               <input type="email" formControlName="email" class="form-control"
-                                                  placeholder="au moins 3 letttres ">
-                                              <p style="color: brown;" *ngIf="!form.controls['email'].valid"> ( Email
-                                                  non valide ) </p>
+                                                  >
+                                              <p style="color: brown;" *ngIf="!form.controls['email'].valid"> ( Champ obligatoire *) </p>
 
                                               <label>Mot de Passe</label>
                                               <div class="row">
@@ -84,7 +82,7 @@
                                                   </div>
                                               </div>
                                               <p style="color: brown;"
-                                                  *ngIf="!form.controls['confirmPassword'].valid"> ( Champ obligatoire
+                                                  *ngIf="!form.controls['confirmPassword'].valid"> ( Champ obligatoire *
                                                   ) </p>
                                           </div><Br />
                                           <div class="form-group card mt-3">

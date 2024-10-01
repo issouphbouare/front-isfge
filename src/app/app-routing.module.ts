@@ -40,6 +40,12 @@ import { EditMatiereComponent } from './components/admin/matiere/edit-matiere/ed
 import { SeriesComponent } from './components/admin/serie/series/series.component';
 import { AddSerieComponent } from './components/admin/serie/add-serie/add-serie.component';
 import { EditSerieComponent } from './components/admin/serie/edit-serie/edit-serie.component';
+import { NiveauxComponent } from './components/admin/niveau/niveaux/niveaux.component';
+import { AddNiveauComponent } from './components/admin/niveau/add-niveau/add-niveau.component';
+import { EditNiveauComponent } from './components/admin/niveau/edit-niveau/edit-niveau.component';
+import { CyclesComponent } from './components/admin/cycle/cycles/cycles.component';
+import { AddCycleComponent } from './components/admin/cycle/add-cycle/add-cycle.component';
+import { EditCycleComponent } from './components/admin/cycle/edit-cycle/edit-cycle.component';
 
 const routes: Routes = [
   {path : "" , component : DashboardComponent },
@@ -68,6 +74,12 @@ const routes: Routes = [
  {path : "series" , component : SeriesComponent },
  {path : "addSerie" , component : AddSerieComponent },
  {path : "editSerie/:id" , component : EditSerieComponent },
+ {path : "niveaux" , component : NiveauxComponent },
+ {path : "addNiveau" , component : AddNiveauComponent },
+ {path : "editNiveau/:id" , component : EditNiveauComponent },
+ {path : "cycles" , component : CyclesComponent },
+ {path : "addCycle" , component : AddCycleComponent },
+ {path : "editCycle/:id" , component : EditCycleComponent },
  {path : "enseignants" , component : EnseignantsComponent },
  {path : "addEnseignant" , component : AddEnseignantComponent },
  {path : "editEnseignant/:id" , component : EditEnseignantComponent },

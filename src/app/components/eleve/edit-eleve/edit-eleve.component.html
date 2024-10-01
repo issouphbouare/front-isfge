@@ -30,7 +30,7 @@
                       style="color: brown"
                       *ngIf="!form.controls['prenom'].valid"
                     >
-                      (Le premier caractere doit etre une lettre majuscule )
+                      (Champ obligatoire * )
                     </p>
                     <label>Nom</label>
                     <input
@@ -39,7 +39,7 @@
                       class="form-control"
                     />
                     <p style="color: brown" *ngIf="!form.controls['nom'].valid">
-                      (Mettez des lettres majuscules)
+                      (Champ obligatoire *)
                     </p>
 
                     <label>Genre</label>

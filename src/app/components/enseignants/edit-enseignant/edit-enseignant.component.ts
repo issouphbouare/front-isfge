@@ -32,8 +32,8 @@ export class EditEnseignantComponent implements OnInit {
 
   ngOnInit(): void {
     this.form=this.formBuilder.group({
-      prenom: ['', [Validators.required, Validators.pattern("([a-zA-Z]).{1,}")]],
-      nom: ['', [Validators.required, Validators.pattern("([A-Z]){1,}")]],
+      prenom: ['', [Validators.required]],
+      nom: ['', [Validators.required]],
       genre : ['',[Validators.required]],
       typeEnseignant : ['',[Validators.required]],
       tauxHoraire : ['',[Validators.pattern('^[0-9]*$'),]],

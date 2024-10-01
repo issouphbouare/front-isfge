@@ -2,29 +2,33 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CycleService } from 'src/app/services/cycle.service';
+import { NiveauService } from 'src/app/services/niveau.service';
 import { SerieService } from 'src/app/services/serie.service';
 
 @Component({
-  selector: 'app-add-serie',
-  templateUrl: './add-serie.component.html',
-  styleUrls: ['./add-serie.component.css']
+  selector: 'app-add-niveau',
+  templateUrl: './add-niveau.component.html',
+  styleUrls: ['./add-niveau.component.css']
 })
-export class AddSerieComponent implements OnInit {
+export class AddNiveauComponent implements OnInit {
 
   public selectedCycle : any
   public cycleCur : any
   public cycles : any
+  public selectedSerie : any
+  public serieCur : any
+  public series : any
   constructor(private formBuilder:FormBuilder,
-    private apiService: SerieService, private cycleService : CycleService,
-    private  router:Router) { }
+    private apiService: NiveauService, private cycleService : CycleService,
+    private serieService: SerieService, private  router:Router) { }
     form : FormGroup= new FormGroup({});
 
 
   ngOnInit(): void {
     this.form=this.formBuilder.group({
       libelle : ['', [Validators.required]],
-      ref : ['', [Validators.pattern("([a-zA-Z]).{0,}")]],
-      cycle:['']
+      cycle:[''],
+      serie : ['', [Validators.required]],
     });
     this.getCycles()
 
@@ -51,22 +55,44 @@ export class AddSerieComponent implements OnInit {
   })
  }
 
+ getSeries(){
+  this.serieService.getByCycle(this.selectedCycle)
+  .subscribe((data: any)=>{
+  this.series=data;
+
+}, err=>{
+  console.log(err);
+})
+
+}
+
+getSerieCur(){
+  this.serieService.getById(this.selectedSerie)
+  .subscribe((data: any)=>{
+  this.serieCur=data;
+
+}, err=>{
+  console.log(err);
+})
+}
+
 
   onSubmit(){
     console.log(this.form.value);
-    this.form.value.cycle=this.cycleCur
+    this.form.value.serie=this.serieCur
     this.apiService.Create(this.form.value).
     subscribe( data => {
-        alert("Serie : "+this.form.value.libelle+
+        alert("Niveau : "+this.form.value.libelle+
         "  ajoutée avec succes  !");
-        this.router.navigate(['series']);
+        this.router.navigate(['niveaux']);
       },err=>{
-        alert("Ce libelle de serie existe deja !");
+        alert("Ce libelle de niveau existe deja !");
       });
 
 }
 
 }
+
 
 
 

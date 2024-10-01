@@ -21,12 +21,10 @@
                             <div class="form-group">
                               <label>Prenom</label>
                               <input [(ngModel)]="donnee.prenom" type="text" formControlName="prenom" class="form-control" placeholder="au moins 2 caracteres ">
-                              <p style="color: brown;" *ngIf="!form.controls['prenom'].valid"> (Le premier
-                                caractere doit etre une lettre majuscule )  </p>
+                              <p style="color: brown;" *ngIf="!form.controls['prenom'].valid"> (Champ obligatoire * )  </p>
                               <label>Nom</label>
                               <input [(ngModel)]="donnee.nom" type="text" formControlName="nom" class="form-control" placeholder="au moins 2 caracteres ">
-                              <p style="color: brown;" *ngIf="!form.controls['nom'].valid"> (Mettez
-                                des lettres majuscules) </p>
+                              <p style="color: brown;" *ngIf="!form.controls['nom'].valid"> (Champ obligatoire *) </p>
                                 <label>Telephone</label>
                     <input
                       type="tel" [(ngModel)]="donnee.telephone"

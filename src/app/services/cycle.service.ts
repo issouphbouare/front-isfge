@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 import { VariableGService } from './variable-g.service';
 import { Apiresponse } from '../models/apiResponse';
+
 @Injectable({
   providedIn: 'root'
 })
-export class SerieService {
+export class CycleService {
   base=this.variableGService.getApi()
-  baseUrl=this.base+"/api/series";
+  baseUrl=this.base+"/api/cycles";
 
 
 
@@ -27,11 +28,6 @@ export class SerieService {
   getById(url:any):Observable<any>{
     const headers = this.TokenStorageService.getHeaders();
     return this.http.get<Apiresponse>(this.baseUrl+"/"+url ,{ headers });
-  }
-
-  getByCycle(url:any):Observable<any>{
-    const headers = this.TokenStorageService.getHeaders();
-    return this.http.get<Apiresponse>(this.baseUrl+"/byCycle/"+url ,{ headers });
   }
 
 
@@ -57,3 +53,8 @@ export class SerieService {
 
 
   }
+
+
+
+
+

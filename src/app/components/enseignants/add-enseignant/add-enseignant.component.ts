@@ -31,8 +31,8 @@ export class AddEnseignantComponent implements OnInit {
 
   ngOnInit(): void {
     this.form=this.formBuilder.group({
-      prenom: ['', [Validators.required, Validators.pattern("([a-zA-Z]).{1,}")]],
-      nom: ['', [Validators.required, Validators.pattern("([A-Z]){1,}")]],
+      prenom: ['', [Validators.required]],
+      nom: ['', [Validators.required]],
       genre : ['',[Validators.required]],
       telephone: ['', [Validators.required, Validators.pattern('^[5-9][0-9]{7}$'),]],
       typeEnseignant : ['',[Validators.required]],

@@ -46,10 +46,10 @@
             <tr *ngIf="totalSearch != 0"></tr>
             <tr *ngIf="totalSearch != 0">
               <th (click)="sortData('nom')">Nom</th>
+              <th (click)="sortData('niveau.serie.ref')">Serie</th>
+              <th (click)="sortData('niveau.serie.cycle.libelle')">Cycle</th>
 
-              <th (click)="sortData('cycle')">Cycle</th>
-
-              <th (click)="sortData('niveau')">Niveau</th>
+              <th (click)="sortData('niveau.libelle')">Niveau</th>
 
               <th (click)="sortData('anneescolaire')">Année</th>
             </tr>
@@ -57,8 +57,9 @@
           <tbody>
             <tr *ngFor="let p of donnees">
               <td>{{ p.nom }}</td>
-              <td>{{ p.cycle }}</td>
-              <td>{{ p.niveau }}</td>
+              <td>{{ p.niveau.serie.ref }}</td>
+              <td>{{ p.niveau.serie.cycle.libelle }}</td>
+              <td>{{ p.niveau.libelle }}</td>
               <td>{{ p.anneeScolaire.libelle }}</td>
 
               <td>
