@@ -3,3 +3,8 @@
     width: 70%;
     margin: auto;
   }
+
+  .collapse {
+    transition: height 0.3s ease;
+  }
+

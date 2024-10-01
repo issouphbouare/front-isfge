@@ -32,14 +32,12 @@
                       <tr *ngIf="totalSearch!=0">
                         <tr *ngIf="totalSearch!=0">
                           <th (click)="sortData('libelle')">Libéllés</th>
-                          <th (click)="sortData('serie.libelle')">Serie</th>
                           <th (click)="sortData('serie.cycle.libelle')">Serie</th>
                       </tr>
                   </thead>
                   <tbody>
                       <tr *ngFor="let p of donnees">
                           <td>{{p.libelle}}</td>
-                          <td>{{p.serie.libelle}}</td>
                           <td>{{p.serie.cycle.libelle}}</td>
 
                           <td>
